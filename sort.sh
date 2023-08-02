@@ -7,7 +7,7 @@ sorted_filename="sorted_$1"
 echo '' > $sorted_filename
 
 for line in $(cat $1); do
-	timestamp=$(git --git-dir="$git_dir/.git" show $line --format="%ct" -q)
+	timestamp=$(git --git-dir="$git_dir/.git" show $line --format="%at" -q)
 	lines[$timestamp]=$line
 done
 
