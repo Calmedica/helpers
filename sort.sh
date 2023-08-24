@@ -8,6 +8,12 @@ echo '' > $sorted_filename
 
 for line in $(cat $1); do
 	timestamp=$(git --git-dir="$git_dir/.git" show $line --format="%at" -q)
+
+	if [ "${lines[$timestamp]}" ]
+	then
+		echo "timestamp $timestamp already used for ${lines[$timestamp]} (tried to add $line)"
+	fi
+
 	lines[$timestamp]=$line
 done
 
